@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const { User, Note } = require("./config");
 const { title } = require('process');
