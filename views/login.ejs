@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Login</title>
+</head>
+<body>
+    
+    <div class="container">
+        <h2>Login</h2>
+        <form action="/login" method="post">
+            <div class="input-box">
+                <label for="name">Username</label>
+                <input type="text" id="name" name="username" placeholder="Enter your name" required autocomplete="off">
+            </div>
+            <div class="input-box">
+                <label for="name">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <% if (error) { %>
+                <p class="er-info"><%= error %></p>
+            <% } %>
+            <% if (success) { %>
+                <p class="suc-info"><%= success %></p>
+            <% } %>
+
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+        <p>Don't have anaccount? <a href="/signup">click</a></p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg,#A890FE, #EA8D8D);
+    width: 100%;
+    min-height: 100vh;
+}
+
+nav {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#logo {
+    font-size: 50px;
+}
+
+.box h2 {
+    font-size: 40px;
+    margin-left: 10px;
+}
+
+.box p {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.box a {
+    background: #FF2E2E;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) inset;
+}
+
+#log-btn {
+    line-height: 50px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.box a:hover {
+    background: #de1b1b;
+}
+
+.warpper {
+    margin: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+    gap: 15px;
+
+}
+
+.warpper li {
+    height: 250px;
+    list-style: none;
+    background: #fff;
+    border-radius: 5px;
+    padding: 15px 20px 20px;
+}
+
+.add-box, button, .icon, .bottom-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.add-box {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.add-box button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+}
+
+.add-box .icon {
+    height: 78px;
+    width: 78px;
+    color: #A890FE;
+    font-size: 30px;
+    border-radius: 50%;
+    border: 2px dashed #A890FE;
+    justify-content: center;
+}
+
+.add-box p {
+    color: #A890FE;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.warpper .note {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.note p {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.note span {
+    color: #6f6f6f;
+    display: block;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.note .bottom-content {
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.note .bottom-content .setting{
+    width: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.note .bottom-content button {
+    color: #A890FE;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.add-modal, .update-modal, .delete-modal {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.add-container, .update-container {
+    width: 400px;
+    margin: 0 auto;
+    padding: 26px;
+    border: none;
+    border-radius: 20px;
+    background: #fff;
+    position: relative;
+}
+
+.delete-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 26px;
+    border: none;
+    border-radius: 20px;
+    background: #fff;
+    position: relative;
+}
+
+.add-container span {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.update-container span {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.delete-container span {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.add-container h2 {
+    text-align: center;
+}
+
+.update-container h2 {
+    text-align: center;
+}
+
+.delete-container h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.input-box{
+    margin-bottom: 10px;
+}
+
+.input-box label {
+    display: block;
+    font-weight: bold;
+}
+
+.input-box input, textarea {
+    width: 100%;
+    padding: 5px 15px;
+    outline: none;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+
+.input-box textarea {
+    min-height: 150px;
+    resize: none;
+}
+
+.submit-btn {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    color: #fff;
+    font-size: 20px;
+    background: #A45EE5;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-btn:hover {
+    background: #9867C5;
+}
+
+@media screen and (max-width: 600px) {
+    nav {
+        padding: 10px 20px;
+    }
+
+    #logo {
+        font-size: 30px;
+    }
+
+    .box h2 {
+        font-size: 30px;
+        margin-left: 5px;
+    }
+
+    .box p {
+        font-size: 15px;
+        margin-right: 10px;
+    }
+}

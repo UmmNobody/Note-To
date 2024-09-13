@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style-home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Note-To</title>
+</head>
+<body>
+    
+    <nav>
+        <div class="box">
+            <i class="fa fa-pencil" id="logo" aria-hidden="true"></i>
+            <h2>Note-To!</h2>
+        </div>
+        <div class="box">
+            <% if (user) { %>
+                <p>Welcome, <%= user.username %>!</p>
+                <a href="/logout"><i class="fa fa-sign-in" id="log-btn" aria-hidden="true"></i></a>
+            <% } else { %>
+                <p>Guest</p>
+                <a href="/login"><i class="fa fa-sign-in" id="log-btn" aria-hidden="true"></i></a>
+            <% } %>
+        </div>
+    </nav>
+
+    <ul class="warpper">
+        <li class="add-box">
+            <button id="add-btn">
+                <div class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                <p>Write new Note-To!</p>
+            </button>
+        </li>
+
+        <% notes.forEach(note => { %>
+            <li class="note">
+                <div class="detail">
+                    <p><%= note.title %></p>
+                    <span><%= note.content %></span>
+                </div>
+                <div class="bottom-content">
+                    <span><%= note.formattedDate %></span>
+                    <div class="setting">
+                        <!-- Use data attributes to store note ID -->
+                        <button class="update-btn" data-id="<%= note._id %>" data-title="<%= note.title %>" data-content="<%= note.content %>">
+                            <i class="fa fa-wrench" aria-hidden="true"></i>
+                        </button>
+                        <button class="delete-btn" data-id="<%= note._id %>">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </li>
+        <% }) %>    
+    </ul>
+    
+    <div class="add-modal">
+        <div class="add-container">
+            <span class="closeAdd">&times;</span>
+            <h2>What new?</h2>
+            <form action="/note" method="post">
+                <div class="input-box">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" placeholder="Enter the title of note" required>
+                </div>
+                <div class="input-box">
+                    <label for="content">Content</label>
+                    <textarea name="content" id="content"></textarea>
+                </div>
+                <button class="submit-btn" type="submit">Write!</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="update-modal">
+        <div class="update-container">
+            <span class="closeUpdate">&times;</span>
+            <h2>Edit Note!</h2>
+            <form action="/note/update" method="post">
+                <input type="hidden" name="id" id="update-id">
+                <div class="input-box">
+                    <label for="update-title">Title</label>
+                    <input type="text" name="title" id="update-title" required>
+                </div>
+                <div class="input-box">
+                    <label for="update-content">Content</label>
+                    <textarea name="content" id="update-content" required></textarea>
+                </div>
+                <button class="submit-btn" type="submit">Update Now!</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="delete-modal">
+        <div class="delete-container">
+            <span class="cancel">&times;</span>
+            <h2>Are you sure want to delete this Note?</h2>
+            <form action="/note/delete" method="post">
+                <input type="hidden" name="id" id="delete-id">
+                <button class="submit-btn" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Add note modal script
+        const addButton = document.getElementById("add-btn");
+        const closeAdd = document.querySelector(".closeAdd");
+        const addModal = document.querySelector(".add-modal");
+        
+        addButton.addEventListener("click", () => {
+            addModal.style.display = "flex";
+        });
+
+        closeAdd.addEventListener("click", () => {
+            addModal.style.display = "none";
+        });
+
+        // Update note modal script
+        const updateButtons = document.querySelectorAll(".update-btn");
+        const closeUpdate = document.querySelector(".closeUpdate");
+        const updateModal = document.querySelector(".update-modal");
+
+        updateButtons.forEach(button => {
+            button.addEventListener("click", (e) => {
+                const id = e.currentTarget.getAttribute("data-id");
+                const title = e.currentTarget.getAttribute("data-title");
+                const content = e.currentTarget.getAttribute("data-content");
+
+                document.getElementById("update-id").value = id;
+                document.getElementById("update-title").value = title;
+                document.getElementById("update-content").value = content;
+
+                updateModal.style.display = "flex";
+            });
+        });
+
+        closeUpdate.addEventListener("click", () => {
+            updateModal.style.display = "none";
+        });
+
+        // Delete note modal script
+        const deleteButton = document.querySelectorAll(".delete-btn");
+        const cancelButton = document.querySelector(".cancel");
+        const deleteModal = document.querySelector(".delete-modal");
+
+        deleteButton.forEach(button => {
+            button.addEventListener("click", (e) => {
+                const id = e.currentTarget.getAttribute("data-id");
+                document.getElementById("delete-id").value = id;
+                
+                deleteModal.style.display = "flex";
+            });
+        });
+
+        cancelButton.addEventListener("click", () => {
+            deleteModal.style.display = "none";
+        });
+
+    </script>
+
+</body>
+</html>
