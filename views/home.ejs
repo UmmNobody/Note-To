@@ -37,12 +37,11 @@
             <li class="note">
                 <div class="detail">
                     <p><%= note.title %></p>
-                    <span><%= note.content %></span>
+                    <span class="cn"><%= note.content %></span>
                 </div>
                 <div class="bottom-content">
                     <span><%= note.formattedDate %></span>
                     <div class="setting">
-                        <!-- Use data attributes to store note ID -->
                         <button class="update-btn" data-id="<%= note._id %>" data-title="<%= note.title %>" data-content="<%= note.content %>">
                             <i class="fa fa-wrench" aria-hidden="true"></i>
                         </button>

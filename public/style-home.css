@@ -43,7 +43,7 @@ nav {
 }
 
 .box a {
-    background: #FF2E2E;
+    background: linear-gradient(135deg,#A890FE, #EA8D8D);
     text-decoration: none;
     cursor: pointer;
     border-radius: 50%;
@@ -60,7 +60,7 @@ nav {
 }
 
 .box a:hover {
-    background: #de1b1b;
+    background: linear-gradient(135deg,#8971df, #cb6d6d);
 }
 
 .warpper {
@@ -132,6 +132,15 @@ nav {
     display: block;
     margin-top: 5px;
     font-size: 16px;
+}
+
+.cn {
+    max-height: 120px;
+    overflow-y: scroll;
+}
+
+.cn::-webkit-scrollbar {
+    width: 10px;
 }
 
 .note .bottom-content {
